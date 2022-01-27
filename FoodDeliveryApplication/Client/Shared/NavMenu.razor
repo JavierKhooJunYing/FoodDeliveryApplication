@@ -1,37 +1,19 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">FoodDeliveryApplication</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+﻿<header class="main-header">
+    <nav class="navv main-nav">
+        <ul>
+            <li><a href="">HOME</a></li>
+            <AuthorizeView>
+                <Authorized>
+                    <li><a href="authentication/profile">Hello, @context.User.Identity.Name!</a></li>
+                    <li><a href="authentication/logout">Log Out</a></li>
+                </Authorized>
+                <NotAuthorized>
+                    <li><a href="authentication/register">Register</a></li>
+                    <li><a href="authentication/login">Log In</a></li>
+                </NotAuthorized>
+            </AuthorizeView>
+            <li><a href="about">ABOUT PEZZO SG</a></li>
+        </ul>
+    </nav>
+    <h1 class="pizzaria-name pizzaria-name-large">PEZZO SG</h1>
+</header>

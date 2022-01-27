@@ -1,62 +1,69 @@
-.navbar-toggler {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.top-row {
-    height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.navbar-brand {
-    font-size: 1.1rem;
-}
-
-.oi {
+/*.oi {
     width: 2rem;
     font-size: 1.1rem;
     vertical-align: text-top;
     top: -2px;
 }
+*/
 
-.nav-item {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
+* {
+    font-family: 'Work-Sans', sans-serif;
+    box-sizing: border-box;
+    color: #777;
 }
 
-    .nav-item:first-of-type {
-        padding-top: 1rem;
-    }
+html, body {
+    margin: 0;
+    padding: 0;
+}
 
-    .nav-item:last-of-type {
-        padding-bottom: 1rem;
-    }
+.main-header {
+    background-color: rgba(255, 255, 255, .6);
+    background-image: url('images/nicePizzaBackground13_edited.jpg');
+    background-blend-mode: multiply;
+    background-size: cover;
+    padding-bottom: 30px;
+}
 
-    .nav-item ::deep a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
+.navv ul {
+    margin: 0;
+}
 
-.nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
+.navv li {
+    display: inline;
+}
+
+.navv a {
+    display: inline-block;
+    padding: .5em;
+    color: white;
+    text-decoration: none;
+}
+
+.navv a:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.main-nav {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: lighter;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+.main-nav li {
+    padding: 0 5%;
+}
+
+.pizzaria-name {
+    text-align: center;
+    margin: 0;
+    font-size: 4em;
+    font-weight: bold;
     color: white;
 }
 
-.nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
+.pizzaria-name-large {
+    font-size: 8em;
 }
 
-@media (min-width: 641px) {
-    .navbar-toggler {
-        display: none;
-    }
-
-    .collapse {
-        /* Never collapse the sidebar for wide screens */
-        display: block;
-    }
-}

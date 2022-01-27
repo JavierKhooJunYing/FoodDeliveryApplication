@@ -1,0 +1,96 @@
+﻿@page "/order"
+@inject HttpClient _client
+@inject IJSRuntime js 
+@attribute [Authorize]
+
+@if (MenuItems == null)
+{
+    <div class="alert alert-info loading">Loading MenuItems...Please Wait</div>
+}
+else
+{
+    <section class="content-section container">
+        <h2 class="section-header">Personal Pizzas (6")</h2>
+        <div class="shop-items">
+            @foreach (var menuItem in MenuItems)
+            {
+                if (menuItem.Type == "Pizza")
+                {
+                    <div class="shop-item">
+                        <span class="shop-item-title">@menuItem.Name</span>
+                        <img class="shop-item-image" src="@menuItem.ImageUrl">
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">S$@menuItem.Cost</span>
+                            <button class="button shop-item-button" role="button">Add to Cart</button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="content-section container">
+        <h2 class="section-header">Beverages</h2>
+        <div class="shop-items">
+            @foreach (var menuItem in MenuItems)
+            {
+                if (menuItem.Type == "Beverage")
+                {
+                    <div class="shop-item">
+                        <span class="shop-item-title">@menuItem.Name</span>
+                        <img class="shop-item-image" src="@menuItem.ImageUrl">
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">S$@menuItem.Cost</span>
+                            <button class="button shop-item-button" role="button">Add to Cart</button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="content-section container">
+        <h2 class="section-header">Desserts</h2>
+        <div class="shop-items">
+            @foreach (var menuItem in MenuItems)
+            {
+                if (menuItem.Type == "Dessert")
+                {
+                    <div class="shop-item">
+                        <span class="shop-item-title">@menuItem.Name</span>
+                        <img class="shop-item-image" src="@menuItem.ImageUrl">
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">S$@menuItem.Cost</span>
+                            <button class="button shop-item-button" role="button">Add to Cart</button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="content-section container">
+        <h2 class="section-header">CART</h2>
+        <div class="cart-row">
+            <span class="cart-header cart-column cart-item">ITEM</span>
+            <span class="cart-header cart-column cart-price">PRICE</span>
+            <span class="cart-header cart-column cart-quantity">QUANTITY</span>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-total">
+            <strong class="cart-total-title">Total</strong>
+            <span class="cart-total-price">S$0.00</span>
+        </div>
+        <button class="button button-purchase" type="button">PLACE ORDER</button>
+    </section>
+}
+
+@code {
+
+    private List<MenuItem> MenuItems;
+
+    protected async override Task OnInitializedAsync()
+    {
+        MenuItems = await _client.GetFromJsonAsync<List<MenuItem>>($"{Endpoints.MenuItemsEndpoint}");
+    }
+}
